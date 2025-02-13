@@ -5,22 +5,22 @@ from gilded_rose import Item, GildedRose
 
 
 class GildedRoseTest(unittest.TestCase):
-    # # example of test that checks for logical errors
-    # def test_sulfuras_should_not_decrease_quality(self):
-    #     items = [Item("Sulfuras", 5, 80)]
-    #     gilded_rose = GildedRose(items)
-    #     gilded_rose.update_quality()
-    #     sulfuras_item = items[0]
-    #     self.assertEqual(80, sulfuras_item.quality)
-    #     self.assertEqual(4, sulfuras_item.sell_in)
-    #     self.assertEqual("Sulfuras", sulfuras_item.name)
+    # example of test that checks for logical errors
+    def test_sulfuras_should_not_decrease_quality(self):
+        items = [Item("Sulfuras", 5, 80)]
+        gilded_rose = GildedRose(items)
+        gilded_rose.update_quality()
+        sulfuras_item = items[0]
+        self.assertEqual(80, sulfuras_item.quality)
+        self.assertEqual(4, sulfuras_item.sell_in)
+        self.assertEqual("Sulfuras", sulfuras_item.name)
 
-    # # example of test that checks for syntax errors
-    # def test_gilded_rose_list_all_items(self):
-    #     items = [Item("Sulfuras", 5, 80)]
-    #     gilded_rose = GildedRose(items)
-    #     all_items = gilded_rose.get_item()
-    #     self.assertEqual(["Sulfuras"], all_items)
+    # example of test that checks for syntax errors
+    def test_gilded_rose_list_all_items(self):
+        items = [Item("Sulfuras", 5, 80)]
+        gilded_rose = GildedRose(items)
+        all_items = gilded_rose.get_item()
+        self.assertEqual(["Sulfuras"], all_items)
 
     # my tests
     # 1. The Quality of an item is never more than 50
@@ -48,11 +48,11 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual(4, conjured_item.quality)
 
     # 4. syntax error
-    def test_nonexistent_attribute(self):
+    def test_get_item_by_name(self):
         items = [Item("Elixir of the Mongoose", 5, 7)]
         gilded_rose = GildedRose(items)
-        gilded_rose.update_quality()
-        self.assertEqual(10, items[0].price)
+        elixir_item = gilded_rose.get_item_by_name("Elixir of the Mongoose")
+        self.assertEqual(items, elixir_item)
 
 if __name__ == '__main__':
     unittest.main()
